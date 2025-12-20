@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-mri-deploy
+  labels:
+    app: devops-mri
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-mri
+  template:
+    metadata:
+      labels:
+        app: devops-mri
+    spec:
+      containers:
+      - name: devops-mri
+        image: devops-mri:latest
+        ports:
+        - containerPort: 3002
