@@ -36,4 +36,24 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:${{ github.sha }}
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          image-ref: 'docker.io/${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: Update the tag in manifest file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          sed -i "s|image: .*|image: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:${{ github.sha }}|" k8s/deployment.yaml
+
+          git add k8s/deployment.yaml
+          git commit -m "updated deployment"
+          git push
