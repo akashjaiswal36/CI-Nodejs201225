@@ -36,4 +36,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: devops-mri:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:latest
