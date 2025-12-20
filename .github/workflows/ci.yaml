@@ -12,12 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Gitleaks Scan
         uses: gitleaks/gitleaks-action@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 
       - name: login to Docker Hub
@@ -57,5 +58,3 @@ jobs:
           git add k8s/deployment.yaml
           git commit -m "updated deployment"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
