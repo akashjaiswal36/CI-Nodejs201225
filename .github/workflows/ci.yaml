@@ -57,3 +57,5 @@ jobs:
           git add k8s/deployment.yaml
           git commit -m "updated deployment"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
