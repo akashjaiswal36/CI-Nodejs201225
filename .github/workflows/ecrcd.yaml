@@ -27,7 +27,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::178502900821:role/devops-mri-github-role
-          region: ap-south-1
+          aws-region: ap-south-1
 
       - name: login to ECR
         id: login-ecr
