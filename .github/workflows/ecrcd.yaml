@@ -20,12 +20,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Gitleaks Scan
+      - name: Install GitLeaks (free, stable)
         run: |
-          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64.tar.gz \
-          | tar -xz
+          curl -sSL -o gitleaks.tar.gz \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz
+          tar -xzf gitleaks.tar.gz
           chmod +x gitleaks
-          ./gitleaks detect --source . --verbose --redact
+          ./gitleaks version
+
+      - name: Run GitLeaks scan
+        run: |
+          ./gitleaks detect --source . --redact --exit-code 1
+
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
