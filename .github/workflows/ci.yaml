@@ -5,7 +5,7 @@ on:
     paths-ignore:
       - README.md
       - deployment.yaml
-      
+
 permissions:
   contents: write
 
@@ -57,7 +57,8 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          sed -i "s|image: .*|image: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri:${{ github.sha }}|" k8s/deployment.yaml
+          sed -i "s|tag: .*|tag: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri|" helm/devops-mri/values.yaml
+          sed -i "s|tag: .*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
 
           git add k8s/deployment.yaml
           git commit -m "updated deployment"
