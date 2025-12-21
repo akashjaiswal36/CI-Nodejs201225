@@ -8,7 +8,7 @@ image:
   repository: 178502900821.dkr.ecr.ap-south-1.amazonaws.com/devops-mri
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag:2aa3513464efb6263cb249bd35924bc0cf035e96
+  tag: d8e383d2b1eb3796bd567fd1f1f4cebbfa8d63af
 
 
 
