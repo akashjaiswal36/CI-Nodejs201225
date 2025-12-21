@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: devops-mri
-        image: ajs3ra8/devops-mri:86477d5032d3b34cb220e6627973610fddf6b289
+        image: ajs3ra8/devops-mri:783db225245dac709b93087a8371c1f47e8c2e00
         ports:
         - containerPort: 3002
