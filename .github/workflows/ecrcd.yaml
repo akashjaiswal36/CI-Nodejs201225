@@ -56,4 +56,12 @@ jobs:
           ignore-unfixed: true
           severity: 'CRITICAL'
 
+      - name: Update the value file with tag
+        run: |
+          sed -i "s|tag: .*|tag:${{ github.sha }}|" helm/devops-mri/values.yaml
+          
+          git add helm/devops-mri/values.yaml
+          git commit -m "updated tag in values.yaml file"
+          git push
+
 
