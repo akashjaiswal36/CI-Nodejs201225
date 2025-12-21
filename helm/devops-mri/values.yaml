@@ -13,9 +13,14 @@ image:
 imagePullSecrets:
   - name: ecr-secret
 
+container:
+  port: 3002
+
 service:
   type: LoadBalancer
-  port: 8080
+  port: 80
+  targetPort: 3002
+
 
 
   #  - secretName: chart-example-tls

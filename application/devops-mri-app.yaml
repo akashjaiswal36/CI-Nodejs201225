@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-mri
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/akashjaiswal36/CI-Nodejs201225.git
+    targetRevision: main
+    path: helm/devops-mri
+
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops-mri
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
