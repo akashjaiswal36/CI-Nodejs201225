@@ -8,7 +8,7 @@ image:
   repository: ajs3ra8/devops-mri
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 47f6f6b60dbd3f2fddeeb1c3d353c28fe21857f2
+  tag: e6e610cb69e8438f09de2a3daf375488ee68af67
 
 
 
