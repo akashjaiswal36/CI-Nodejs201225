@@ -60,6 +60,6 @@ jobs:
           sed -i "s|tag: .*|tag: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri|" helm/devops-mri/values.yaml
           sed -i "s|tag: .*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
 
-          git add k8s/deployment.yaml
+          git add helm/devops-mri/values.yaml
           git commit -m "updated deployment"
           git push
