@@ -62,7 +62,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          git clone https://x-access-token:${{ secrets:GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
+          git clone https://x-access-token:${{ secrets.GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
           cd CD-Nodejs201225
 
           sed -i "s|repository: .*|repository: ${{ steps.login-ecr.outputs.registry }}/devops-mri|" helm/devops-mri/values.yaml
