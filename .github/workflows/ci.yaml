@@ -1,4 +1,4 @@
-name: CI - build, test nodejs application
+name: CI - Kubernetes local - build, test nodejs application
 
 on: workflow_dispatch
 #  push:
