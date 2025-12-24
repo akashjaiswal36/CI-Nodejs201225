@@ -64,6 +64,7 @@ jobs:
 
           git clone https://github.com/akashjaiswal36/CD-Nodejs201225.git
           cd CD-Nodejs201225
+          ls -R helm/
 
           sed -i "s|tag:.*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
           
