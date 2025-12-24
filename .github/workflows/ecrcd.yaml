@@ -62,7 +62,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git clone https://github.com/akashjaiswal36/CD-Nodejs201225.git
+          git clone https://x-access-token:${{ secrets.GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
           cd CD-Nodejs201225
           ls -R helm/devops-mri/
 
