@@ -55,7 +55,9 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          sed -i "s|tag: .*|tag: ${{ secrets.DOCKERHUB_USERNAME }}/devops-mri|" helm/devops-mri/values.yaml
+          git clone https://github.com/akashjaiswal36/CD-Nodejs201225.git
+          cd CD-Nodejs201225
+
           sed -i "s|tag: .*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
 
           git add helm/devops-mri/values.yaml
