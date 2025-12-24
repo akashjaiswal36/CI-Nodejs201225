@@ -63,7 +63,7 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git clone https://github.com/akashjaiswal36/CD-Nodejs201225.git
-          
+          cd CD-Nodejs201225
 
           sed -i "s|tag:.*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
           
