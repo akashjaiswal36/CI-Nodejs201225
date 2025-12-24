@@ -1,4 +1,4 @@
-name: CI - build, test nodejs application
+name: CI - EKS-ECR build, test nodejs application
 
 on:
   push:
