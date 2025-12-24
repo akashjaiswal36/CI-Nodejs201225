@@ -1,10 +1,12 @@
 name: CI - build, test nodejs application
 
 on:
-  push:
-    paths-ignore:
-      - README.md
-      - deployment.yaml
+  workflow_dispatch:
+    
+#  push:
+#    paths-ignore:
+#      - README.md
+#      - deployment.yaml
 
 permissions:
   contents: write
