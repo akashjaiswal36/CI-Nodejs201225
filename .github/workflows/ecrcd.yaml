@@ -1,12 +1,10 @@
-name: CI - ECR-EKS build, test nodejs application
+name: CI - build, test nodejs application
 
 on:
-  workflow_dispatch:
-    
-#  push:
-#    paths-ignore:
-#      - README.md
-#      - deployment.yaml
+  push:
+    paths-ignore:
+      - README.md
+      - deployment.yaml
 
 permissions:
   contents: write
@@ -56,23 +54,11 @@ jobs:
           ignore-unfixed: true
           severity: 'CRITICAL'
 
-      - name: Checkout Gitops CD repo
-        uses: actions/checkout@v3
-        with:
-          repository: akashjaiswal36/CD-Nodejs201225
-          token: secrets.GITOPS_REPO_TOKEN
-          path: CD-Nodejs201225
-
       - name: Update the value file with tag
-        working-directory: CD-Nodejs201225
         run: |
-          ls -l helm/devops-mri/
+          rm -rf .cache
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
-          git ls-remote https://x-access-token:${{ secrets.GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
-
-          git clone https://x-access-token:${{ secrets.GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
 
           sed -i "s|tag:.*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
           
