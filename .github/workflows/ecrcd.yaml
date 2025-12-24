@@ -64,7 +64,8 @@ jobs:
 
           git clone https://x-access-token:${{ secrets.GITOPS_REPO_TOKEN }}@github.com/akashjaiswal36/CD-Nodejs201225.git
           cd CD-Nodejs201225
-          ls -R helm/devops-mri/
+          ls -R
+          find . -name values.yaml
 
           sed -i "s|tag:.*|tag: ${{ github.sha }}|" helm/devops-mri/values.yaml
           
